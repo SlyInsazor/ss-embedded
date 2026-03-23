@@ -28,6 +28,7 @@ jobs:
         run: pip install platformio
 
       - name: Build Firmware (ESP32-CAM AI-Thinker)
+        working-directory: ./camera
         run: pio run -e esp32cam
  
       # Salvăm firmware.bin ca artifact descărcabil
@@ -52,6 +53,7 @@ jobs:
         run: sudo apt-get install -y cppcheck
 
       - name: Run Cppcheck
+        working-directory: ./camera
         run: |
           cppcheck --enable=all \
                    --inconclusive \
