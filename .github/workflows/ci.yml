@@ -30,6 +30,9 @@ jobs:
       - name: Build Firmware (ESP32-CAM AI-Thinker)
         working-directory: ./camera
         run: pio run -e esp32cam
+
+      - name: Smoke test
+        run: python -m py_compile receiver.py
  
       # Salvăm firmware.bin ca artifact descărcabil
       - name: Upload Firmware Artifact
@@ -37,6 +40,7 @@ jobs:
         with:
           name: firmware-esp32cam
           path: camera/.pio/build/esp32cam/firmware.bin
+     
  
   # =============================================
   # Job 2: Analiza statică C++ (Firmware)
